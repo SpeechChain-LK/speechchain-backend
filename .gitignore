@@ -1,0 +1,6 @@
+# Model files
+app/models/whisper/
+app/models/mbart50/
+
+# Environment files
+speechchain-lk-env
