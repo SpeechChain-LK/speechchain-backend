@@ -1,12 +1,12 @@
-# app/services/asr_service.py
+# app/services/sinhala_asr_service.py
 from transformers import WhisperProcessor, WhisperForConditionalGeneration
 import librosa
 import torch
 import tempfile
 
-# Load model and processor once when the service starts
-processor = WhisperProcessor.from_pretrained("app/models/Tamil-To-Sinhala/whisper")
-model = WhisperForConditionalGeneration.from_pretrained("app/models/Tamil-To-Sinhala/whisper")
+# Load model and processor for Sinhala ASR
+processor = WhisperProcessor.from_pretrained("app/models/Sinhala-To-Tamil/whisper")
+model = WhisperForConditionalGeneration.from_pretrained("app/models/Sinhala-To-Tamil/whisper")
 
 def transcribe(audio_bytes):
     # Save audio temporarily
@@ -19,7 +19,7 @@ def transcribe(audio_bytes):
 
     # Preprocess
     input_features = processor(audio, sampling_rate=16000, return_tensors="pt").input_features
-    forced_decoder_ids = processor.get_decoder_prompt_ids(language="ta", task="transcribe")
+    forced_decoder_ids = processor.get_decoder_prompt_ids(language="si", task="transcribe")
 
     # Inference
     predicted_ids = model.generate(input_features, forced_decoder_ids=forced_decoder_ids)
