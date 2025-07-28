@@ -2,8 +2,8 @@
 from transformers import MBartForConditionalGeneration, MBart50TokenizerFast
 
 # Load tokenizer and model (once)
-tokenizer = MBart50TokenizerFast.from_pretrained("app/models/mbart50")
-model = MBartForConditionalGeneration.from_pretrained("app/models/mbart50")
+tokenizer = MBart50TokenizerFast.from_pretrained("app/models/Tamil-To-Sinhala/mbart50")
+model = MBartForConditionalGeneration.from_pretrained("app/models/Tamil-To-Sinhala/mbart50")
 
 # Set source language (Tamil)
 tokenizer.src_lang = "ta_IN"
